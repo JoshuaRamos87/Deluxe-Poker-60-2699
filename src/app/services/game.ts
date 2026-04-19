@@ -160,11 +160,11 @@ export class GameService {
       for (let note = 0; note < 3; note++) {
         this.isFlashing.set(true);
         if (this.soundEnabled()) this.sound.playWinNote(note);
-        await new Promise(resolve => setTimeout(resolve, 150));
+        await new Promise(resolve => setTimeout(resolve, 100));
         this.isFlashing.set(false);
-        await new Promise(resolve => setTimeout(resolve, 150));
+        await new Promise(resolve => setTimeout(resolve, 100));
       }
-      await new Promise(resolve => setTimeout(resolve, 200));
+      await new Promise(resolve => setTimeout(resolve, 150));
     }
   }
 

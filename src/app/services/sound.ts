@@ -37,10 +37,10 @@ export class SoundService {
     if (!this.audioCtx) return;
     
     // Notes for "beep-^dee-deep" melody
-    // sequence: 0:beep(880), 1:^dee(1108.73), 2:deep(880)
-    const freqs = [880, 1108.73, 880];
+    // sequence: 0:beep(880), 1:^dee(1108.73), 2:deep(1308.73)
+    const freqs = [880, 1108.73, 1308.73];
     const freq = freqs[noteIndex % 3];
-    this.beep(freq, 0.2);
+    this.beep(freq, 0.1);
   }
 
   playCountingBeep() {
