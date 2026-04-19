@@ -6,9 +6,13 @@ import { DeviceShellComponent } from './components/device-shell/device-shell';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, DeviceShellComponent],
-  template: '<app-device-shell></app-device-shell>',
+  templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('frontend');
+  showRules = signal(false);
+
+  toggleRules() {
+    this.showRules.update(v => !v);
+  }
 }

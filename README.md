@@ -49,7 +49,13 @@ To generate a native Android debug APK:
 npm run build:apk
 ```
 *The resulting APK will be located in `android/app/build/outputs/apk/debug/app-debug.apk`.*
-*(Note: Requires Android SDK and Java installed on your machine.)*
+
+### 5. Update App Icons
+If you modify `resources/icon.svg`, update the native Android icons by running:
+```bash
+npm run generate:assets
+```
+*(Note: Both Android commands require Android SDK and Java installed.)*
 
 ## Rules & Paytable
 For detailed information on hand rankings, point rewards, and game mechanics, see the [Rules.md](./Rules.md) file.
