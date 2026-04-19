@@ -5,12 +5,19 @@
 /tmp
 /out-tsc
 /bazel-out
-/android
 
-# Node
-/node_modules
+# Build & Dependency Artifacts
+**/node_modules/
+**/build/
+**/.gradle/
+**/capacitor-cordova-android-plugins/
 npm-debug.log
 yarn-error.log
+
+# Android Specific
+android/local.properties
+android/app/src/main/res/mipmap-*/ic_launcher*
+android/app/src/main/res/drawable*/splash.png
 
 # IDEs and editors
 .idea/
@@ -20,6 +27,7 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+*.iml
 
 # Visual Studio Code
 .vscode/*

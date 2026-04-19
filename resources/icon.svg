@@ -2,9 +2,12 @@
   <!-- Dark Button Slate Background -->
   <rect width="1024" height="1024" rx="200" fill="#3a414e"/>
   
-  <!-- LCD Green Background Circle for the Suit -->
-  <circle cx="512" cy="512" r="420" fill="#97ab8d"/>
+  <!-- LCD Green Background Circle -->
+  <!-- Diameter 700 (approx 68% of canvas) to sit right at the edge of the safe zone -->
+  <circle cx="512" cy="512" r="350" fill="#97ab8d"/>
   
-  <!-- Large Club Icon - Centered and Enlarged -->
-  <text x="512" y="525" font-family="sans-serif" font-weight="bold" font-size="850" text-anchor="middle" dominant-baseline="central" fill="#3a414e">♣</text>
+  <!-- Club Icon -->
+  <!-- Font size 600 (approx 58% of canvas) ensures it is fully within the 66% safe zone -->
+  <!-- Adjusted Y to 540 to visually center the 'heavy' base of the club -->
+  <text x="512" y="540" font-family="sans-serif" font-weight="bold" font-size="600" text-anchor="middle" dominant-baseline="central" fill="#3a414e">♣</text>
 </svg>
