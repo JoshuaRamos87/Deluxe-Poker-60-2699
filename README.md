@@ -43,5 +43,13 @@ To verify the poker hand evaluation logic:
 npm run test:logic
 ```
 
+### 4. Build Android APK
+To generate a native Android debug APK:
+```bash
+npm run build:apk
+```
+*The resulting APK will be located in `android/app/build/outputs/apk/debug/app-debug.apk`.*
+*(Note: Requires Android SDK and Java installed on your machine.)*
+
 ## Rules & Paytable
 For detailed information on hand rankings, point rewards, and game mechanics, see the [Rules.md](./Rules.md) file.
