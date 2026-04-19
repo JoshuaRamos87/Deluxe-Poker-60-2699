@@ -13,7 +13,12 @@ export class ButtonBoardComponent {
   gameService = inject(GameService);
 
   onDealDraw() {
-    const phase = this.gameService.session()?.phase;
+    const s = this.gameService.session();
+    const score = s?.currentPlayer === 1 ? s?.p1Score : s?.p2Score;
+    
+    if (score === 0) return; // Completely Game Over for this player session
+
+    const phase = s?.phase;
     if (phase === 'idle' || phase === 'gameover') {
       this.gameService.deal();
     } else if (phase === 'dealt') {

@@ -20,8 +20,8 @@ server.post('/api/game/new', async (request, reply) => {
   const session: GameSession = {
     sessionId,
     currentPlayer: 1,
-    p1Score: 0,
-    p2Score: 0,
+    p1Score: 100,
+    p2Score: 100,
     deck: [],
     currentHand: [],
     heldIndices: [false, false, false, false, false],
@@ -89,9 +89,17 @@ server.post('/api/game/:sessionId/draw', async (request, reply) => {
   const { rank, points } = evaluateHand(newHand);
   
   if (session.currentPlayer === 1) {
-    session.p1Score += points;
+    if (points > 0) {
+      session.p1Score += points;
+    } else {
+      session.p1Score = Math.max(0, session.p1Score - 5);
+    }
   } else {
-    session.p2Score += points;
+    if (points > 0) {
+      session.p2Score += points;
+    } else {
+      session.p2Score = Math.max(0, session.p2Score - 5);
+    }
   }
 
   session.currentHand = newHand;

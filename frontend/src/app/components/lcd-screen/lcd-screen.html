@@ -11,11 +11,11 @@
     
     <!-- Message Row -->
     <div class="lcd-message">
-      {{ gameService.lastWin() ? gameService.lastWin()?.rank : '' }}
+      {{ isTotalGameOver() ? 'TOTAL GAME OVER' : (gameService.lastWin() ? gameService.lastWin()?.rank : '') }}
     </div>
 
     <!-- Cards Array -->
-    <div class="lcd-hand">
+    <div class="lcd-hand" *ngIf="!isTotalGameOver()">
       <div *ngFor="let card of [0,1,2,3,4]; let i = index" class="lcd-card-slot">
         <ng-container *ngIf="gameService.session()?.currentHand?.[i] as c; else emptySlot">
           <ng-container *ngIf="gameService.visibleIndices()[i]; else hiddenCard">

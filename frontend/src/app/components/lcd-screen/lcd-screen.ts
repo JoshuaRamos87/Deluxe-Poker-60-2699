@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameService } from '../../services/game';
 
@@ -12,6 +12,13 @@ import { GameService } from '../../services/game';
 export class LcdScreenComponent {
   gameService = inject(GameService);
   
+  isTotalGameOver = computed(() => {
+    const s = this.gameService.session();
+    if (!s) return false;
+    const score = s.currentPlayer === 1 ? s.p1Score : s.p2Score;
+    return score === 0;
+  });
+
   getRankDisplay(rank: number): string {
     if (rank === 10) return '0';
     if (rank === 11) return 'J';
