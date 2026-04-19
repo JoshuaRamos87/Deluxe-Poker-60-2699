@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "retro-poker-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,7 @@
     "test": "vitest run"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Joshua Ramos",
   "type": "module",
   "dependencies": {
     "@fastify/cors": "^11.2.0",
