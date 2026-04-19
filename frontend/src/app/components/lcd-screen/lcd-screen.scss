@@ -19,7 +19,8 @@
   padding: 8px;
   display: flex;
   flex-direction: column;
-  font-family: 'VT323', monospace;
+  font-family: 'DSEG14-Classic', sans-serif;
+  font-style: italic;
   color: #1a2018;
   position: relative;
 }
@@ -33,10 +34,15 @@
   line-height: 1;
   height: 24px;
 
+  .player-score-group {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
   .credits {
     font-size: 36px;
     letter-spacing: 3px;
-    padding-left: 24px;
   }
   
   .sound-icon {
@@ -71,16 +77,29 @@
   background-color: rgba(0, 0, 0, 0.03);
 
   .card-suit {
-    font-size: 20px;
+    font-size: 28px;
     line-height: 1;
   }
 
-  .card-rank {
-    font-size: 56px;
+  .card-rank-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -40%);
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .tens-digit {
+    font-size: 56px;
+    line-height: 1;
+    margin-right: -4px;
+  }
+
+  .card-rank {
+    font-size: 56px;
+    line-height: 1;
+    margin-right: 10px;
     
     &.ghost {
       opacity: 0.05;

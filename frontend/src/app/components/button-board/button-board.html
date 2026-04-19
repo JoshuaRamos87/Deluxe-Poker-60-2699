@@ -15,17 +15,17 @@
   <!-- Bottom Control Buttons -->
   <div class="controls-row">
     <!-- NEW GAME -->
-    <div class="control-group">
+    <div class="control-group horizontal">
       <button (click)="gameService.newGame()" class="small-round-btn"></button>
       <span class="btn-label">New Game</span>
     </div>
 
     <!-- DEAL DRAW -->
-    <div class="control-group deal-group">
+    <div class="control-group deal-group horizontal">
       <div class="btn-well">
         <button (click)="onDealDraw()" class="deal-draw-btn"></button>
       </div>
-      <span class="btn-label large">Deal Draw</span>
+      <span class="btn-label large">Deal/Draw</span>
     </div>
 
     <!-- SOUND & PLAYER -->
