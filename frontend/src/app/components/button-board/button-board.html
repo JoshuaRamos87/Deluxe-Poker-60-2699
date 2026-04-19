@@ -1,26 +1,38 @@
-<div class="button-container">
-  <!-- Hold Buttons -->
-  <div class="hold-buttons">
-    <button *ngFor="let i of [0,1,2,3,4]" 
-            (click)="gameService.toggleHold(i)"
-            class="oval-btn h-c-btn">
-      H/C
-    </button>
+<div class="button-board">
+  <!-- Hold Buttons Row -->
+  <div class="hold-row">
+    <ng-container *ngFor="let i of [0, 1, 2, 3, 4]">
+      <button class="hold-btn" (click)="gameService.toggleHold(i)"></button>
+      <span class="hc-label" *ngIf="i < 4">-H/C-</span>
+    </ng-container>
   </div>
 
-  <!-- Primary Controls -->
-  <div class="main-controls">
-    <div class="side-buttons">
-      <button (click)="gameService.newGame()" class="round-btn">NEW GAME</button>
-      <button (click)="gameService.toggleSound()" class="round-btn">SOUND</button>
+  <!-- Bottom Control Buttons -->
+  <div class="controls-row">
+    <!-- NEW GAME -->
+    <div class="control-group">
+      <button (click)="gameService.newGame()" class="small-round-btn"></button>
+      <span class="btn-label">New Game</span>
     </div>
-    
-    <button (click)="onDealDraw()" class="deal-btn">
-      DEAL<br>DRAW
-    </button>
 
-    <div class="side-buttons">
-      <button (click)="gameService.switchPlayer()" class="round-btn">PLAYER</button>
+    <!-- DEAL DRAW -->
+    <div class="control-group deal-group">
+      <div class="btn-well">
+        <button (click)="onDealDraw()" class="deal-draw-btn"></button>
+      </div>
+      <span class="btn-label large">Deal Draw</span>
+    </div>
+
+    <!-- SOUND & PLAYER -->
+    <div class="control-group-row">
+      <div class="control-group">
+        <button (click)="gameService.toggleSound()" class="small-round-btn"></button>
+        <span class="btn-label">Sound</span>
+      </div>
+      <div class="control-group">
+        <button (click)="gameService.switchPlayer()" class="small-round-btn"></button>
+        <span class="btn-label">Player</span>
+      </div>
     </div>
   </div>
 </div>

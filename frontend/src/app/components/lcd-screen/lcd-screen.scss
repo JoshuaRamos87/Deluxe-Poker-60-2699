@@ -1,76 +1,100 @@
-.lcd-container {
-  background-color: #9ea79c;
-  padding: 10px;
-  border: 4px solid #333;
-  width: 100%;
-  height: 200px;
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.lcd-outer {
+  width: 95%;
+  margin: 16px auto 0;
+  background-color: #b4c3aa;
+  border-radius: 6px;
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
+  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.6);
+  padding: 2px;
+}
+
+.lcd-inner {
+  height: 120px;
+  background-color: #97ab8d;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 4px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  font-family: 'Courier New', Courier, monospace; // Placeholder for digital font
-  color: #1a1a1a;
-  box-sizing: border-box;
-  text-transform: uppercase;
-}
-
-.lcd-top-bar {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.win-message {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1rem;
-  height: 1.2rem;
-}
-
-.cards-display {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
-  height: 100px;
-}
-
-.card-slot {
-  border: 1px solid rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  font-family: 'VT323', monospace;
+  color: #1a2018;
   position: relative;
 }
 
-.hold-indicator {
-  font-size: 0.6rem;
-  font-weight: bold;
-  visibility: hidden;
-  height: 0.8rem;
+.lcd-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 8px;
+  font-size: 14px;
+  line-height: 1;
+  height: 16px;
+
+  .credits {
+    font-size: 24px;
+    letter-spacing: 2px;
+    padding-left: 16px;
+  }
   
-  &.visible {
-    visibility: visible;
+  .sound-icon {
+    font-size: 12px;
   }
 }
 
-.card-content {
+.lcd-message {
+  text-align: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 4px 0;
+  height: 16px;
+  opacity: 0.8;
+}
+
+.lcd-hand {
+  flex: 1;
+  display: flex;
+  gap: 2px;
+}
+
+.lcd-card-slot {
+  flex: 1;
+  border: 1.5px solid #1a2018;
+  border-radius: 2px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  font-size: 2rem;
-  line-height: 1;
+  padding: 4px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.03);
 
-  .rank {
-    font-weight: bold;
+  .card-suit {
+    font-size: 14px;
+    line-height: 1;
   }
-  .suit {
-    font-size: 1.5rem;
-  }
-}
 
-.empty .card-content {
-  background: rgba(0,0,0,0.05);
-  width: 100%;
-  height: 60px;
+  .card-rank {
+    font-size: 36px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    
+    &.ghost {
+      opacity: 0.05;
+    }
+  }
+
+  .hold-label {
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    background-color: #1a2018;
+    color: #97ab8d;
+    padding: 0 2px;
+    line-height: 1;
+  }
 }
