@@ -1,21 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 .lcd-outer {
-  width: 95%;
-  margin: 16px auto 0;
+  width: 100%;
+  margin: 24px auto 0;
   background-color: #b4c3aa;
-  border-radius: 6px;
-  border-bottom: 3px solid white;
-  border-right: 3px solid white;
-  box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.6);
-  padding: 2px;
+  border-radius: 8px;
+  border-bottom: 4px solid white;
+  border-right: 4px solid white;
+  box-shadow: inset 3px 3px 12px rgba(0, 0, 0, 0.6);
+  padding: 4px;
+  box-sizing: border-box;
 }
 
 .lcd-inner {
-  height: 120px;
+  height: 180px;
   background-color: #97ab8d;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 4px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 8px;
   display: flex;
   flex-direction: column;
   font-family: 'VT323', monospace;
@@ -27,55 +28,55 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0 8px;
-  font-size: 14px;
+  padding: 0 12px;
+  font-size: 20px;
   line-height: 1;
-  height: 16px;
+  height: 24px;
 
   .credits {
-    font-size: 24px;
-    letter-spacing: 2px;
-    padding-left: 16px;
+    font-size: 36px;
+    letter-spacing: 3px;
+    padding-left: 24px;
   }
   
   .sound-icon {
-    font-size: 12px;
+    font-size: 16px;
   }
 }
 
 .lcd-message {
   text-align: center;
-  font-size: 14px;
+  font-size: 20px;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 4px 0;
-  height: 16px;
+  letter-spacing: 2px;
+  margin: 8px 0;
+  height: 24px;
   opacity: 0.8;
 }
 
 .lcd-hand {
   flex: 1;
   display: flex;
-  gap: 2px;
+  gap: 4px;
 }
 
 .lcd-card-slot {
   flex: 1;
-  border: 1.5px solid #1a2018;
-  border-radius: 2px;
+  border: 2px solid #1a2018;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
-  padding: 4px;
+  padding: 6px;
   position: relative;
   background-color: rgba(0, 0, 0, 0.03);
 
   .card-suit {
-    font-size: 14px;
+    font-size: 20px;
     line-height: 1;
   }
 
   .card-rank {
-    font-size: 36px;
+    font-size: 56px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -88,13 +89,13 @@
 
   .hold-label {
     position: absolute;
-    bottom: 2px;
+    bottom: 4px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 10px;
+    font-size: 14px;
     background-color: #1a2018;
     color: #97ab8d;
-    padding: 0 2px;
+    padding: 0 4px;
     line-height: 1;
   }
 }
