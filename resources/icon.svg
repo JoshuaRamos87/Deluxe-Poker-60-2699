@@ -1,0 +1,14 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark Button Slate Background -->
+  <rect width="1024" height="1024" rx="200" fill="#3a414e"/>
+  
+  <!-- LCD Green Background Circle for the Suit -->
+  <circle cx="512" cy="480" r="380" fill="#97ab8d"/>
+  
+  <!-- Large Club Icon -->
+  <text x="512" y="550" font-family="sans-serif" font-weight="bold" font-size="600" text-anchor="middle" fill="#3a414e">♣</text>
+  
+  <!-- RadioShack Style Model Number Label -->
+  <rect x="300" y="850" width="424" height="80" rx="10" fill="#d3d4d0" opacity="0.8"/>
+  <text x="512" y="910" font-family="monospace" font-weight="bold" font-size="50" text-anchor="middle" fill="#3a414e">CAT. NO. 60-2699</text>
+</svg>
