@@ -1,0 +1,26 @@
+<div class="button-container">
+  <!-- Hold Buttons -->
+  <div class="hold-buttons">
+    <button *ngFor="let i of [0,1,2,3,4]" 
+            (click)="gameService.toggleHold(i)"
+            class="oval-btn h-c-btn">
+      H/C
+    </button>
+  </div>
+
+  <!-- Primary Controls -->
+  <div class="main-controls">
+    <div class="side-buttons">
+      <button (click)="gameService.newGame()" class="round-btn">NEW GAME</button>
+      <button (click)="gameService.toggleSound()" class="round-btn">SOUND</button>
+    </div>
+    
+    <button (click)="onDealDraw()" class="deal-btn">
+      DEAL<br>DRAW
+    </button>
+
+    <div class="side-buttons">
+      <button (click)="gameService.switchPlayer()" class="round-btn">PLAYER</button>
+    </div>
+  </div>
+</div>

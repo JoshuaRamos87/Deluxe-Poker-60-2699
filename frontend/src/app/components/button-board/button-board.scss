@@ -1,0 +1,74 @@
+.button-container {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hold-buttons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.main-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.side-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.oval-btn {
+  background: #eee;
+  border: 2px solid #999;
+  border-radius: 50%;
+  aspect-ratio: 1.5/1;
+  font-size: 0.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px #777;
+  
+  &:active {
+    box-shadow: 0 2px #777;
+    transform: translateY(2px);
+  }
+}
+
+.round-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #ccc;
+  border: 2px solid #888;
+  font-size: 0.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px #666;
+
+  &:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(2px);
+  }
+}
+
+.deal-btn {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #ffcc00; // Standout color
+  border: 3px solid #cc9900;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 6px #997700;
+
+  &:active {
+    box-shadow: 0 3px #997700;
+    transform: translateY(3px);
+  }
+}

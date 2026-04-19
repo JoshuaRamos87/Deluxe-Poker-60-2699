@@ -8,9 +8,13 @@
 .angular/
 
 # Node modules and dependency files
-/node_modules/
-/package-lock.json
-/yarn.lock
+node_modules/
+package-lock.json
+yarn.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
 
 # Environment files
 /.env

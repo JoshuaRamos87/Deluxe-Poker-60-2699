@@ -1,0 +1,38 @@
+<div class="lcd-container">
+  <div class="lcd-top-bar">
+    <div class="player-indicator">
+      P{{ gameService.session()?.currentPlayer || 1 }}
+    </div>
+    <div class="score-display">
+      {{ (gameService.session()?.currentPlayer === 1 ? gameService.session()?.p1Score : gameService.session()?.p2Score) | number:'5.0-0' }}
+    </div>
+    <div class="sound-indicator" *ngIf="gameService.soundEnabled()">
+      (((o)))
+    </div>
+  </div>
+
+  <div class="win-message" *ngIf="gameService.lastWin()">
+    {{ gameService.lastWin()?.rank }} +{{ gameService.lastWin()?.points }}
+  </div>
+
+  <div class="cards-display">
+    <div *ngFor="let card of gameService.session()?.currentHand; let i = index" class="card-slot">
+      <div class="hold-indicator" [class.visible]="gameService.heldIndices()[i]">HOLD</div>
+      <div class="card-content">
+        <span class="rank">{{ getRankDisplay(card.rank) }}</span>
+        <span class="suit" [ngSwitch]="card.suit">
+          <span *ngSwitchCase="'S'">♠</span>
+          <span *ngSwitchCase="'H'">♥</span>
+          <span *ngSwitchCase="'D'">♦</span>
+          <span *ngSwitchCase="'C'">♣</span>
+        </span>
+      </div>
+    </div>
+    <!-- Empty slots if no hand -->
+    <ng-container *ngIf="!gameService.session()?.currentHand?.length">
+      <div *ngFor="let i of [0,1,2,3,4]" class="card-slot empty">
+        <div class="card-content"></div>
+      </div>
+    </ng-container>
+  </div>
+</div>

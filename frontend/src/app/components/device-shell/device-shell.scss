@@ -1,0 +1,36 @@
+.device-case {
+  background: linear-gradient(135deg, #c0c0c0 0%, #a0a0a0 100%);
+  width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 40px;
+  border: 4px solid #888;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.banner {
+  text-align: center;
+  color: #333;
+  font-family: Arial, sans-serif;
+  border-bottom: 2px solid #888;
+  padding-bottom: 10px;
+
+  .brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+  .model {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #cc0000;
+  }
+
+  .cat-no {
+    font-size: 0.7rem;
+  }
+}
