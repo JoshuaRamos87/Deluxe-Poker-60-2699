@@ -5,18 +5,21 @@
       <div class="player-score-group">
         <span class="player-num">P{{ gameService.session()?.currentPlayer || 1 }}</span>
         <span class="credits">{{ (gameService.session()?.currentPlayer === 1 ? gameService.session()?.p1Score : gameService.session()?.p2Score) }}</span>
+        <span class="win-indicator" *ngIf="gameService.lastWin() && gameService.lastWin()!.points > 0">WIN</span>
       </div>
       <span class="sound-icon">{{ gameService.soundEnabled() ? '(((o)))' : '' }}</span>
     </div>
     
     <!-- Message Row -->
     <div class="lcd-message">
-      {{ isTotalGameOver() ? 'TOTAL GAME OVER' : (gameService.lastWin() ? gameService.lastWin()?.rank : '') }}
+      {{ isTotalGameOver() ? 'TOTAL GAME OVER' : (gameService.lastWin() && gameService.lastWin()!.points === 0 ? 'GAME OVER' : '') }}
     </div>
 
     <!-- Cards Array -->
     <div class="lcd-hand" *ngIf="!isTotalGameOver()">
-      <div *ngFor="let card of [0,1,2,3,4]; let i = index" class="lcd-card-slot">
+      <div *ngFor="let card of [0,1,2,3,4]; let i = index" 
+           class="lcd-card-slot"
+           [class.win-flash]="gameService.winningIndices().includes(i) && gameService.isFlashing()">
         <ng-container *ngIf="gameService.session()?.currentHand?.[i] as c; else emptySlot">
           <ng-container *ngIf="gameService.visibleIndices()[i]; else hiddenCard">
             <span class="card-suit">{{ getSuitDisplay(c.suit) }}</span>

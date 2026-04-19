@@ -86,7 +86,7 @@ server.post('/api/game/:sessionId/draw', async (request, reply) => {
     }
   }
 
-  const { rank, points } = evaluateHand(newHand);
+  const { rank, points, winningIndices } = evaluateHand(newHand);
   
   if (session.currentPlayer === 1) {
     if (points > 0) {
@@ -110,6 +110,7 @@ server.post('/api/game/:sessionId/draw', async (request, reply) => {
     finalHand: session.currentHand,
     handRank: rank,
     pointsWon: points,
+    winningIndices,
     p1Score: session.p1Score,
     p2Score: session.p2Score,
     phase: session.phase

@@ -32,9 +32,18 @@ export class SoundService {
     oscillator.stop(this.audioCtx.currentTime + duration);
   }
 
+  playWinNote(noteIndex: number) {
+    this.init();
+    if (!this.audioCtx) return;
+    
+    // Notes for "beep-^dee-deep" melody
+    // sequence: 0:beep(880), 1:^dee(1108.73), 2:deep(880)
+    const freqs = [880, 1108.73, 880];
+    const freq = freqs[noteIndex % 3];
+    this.beep(freq, 0.2);
+  }
+
   playWin() {
-    this.beep(440, 0.1);
-    setTimeout(() => this.beep(554.37, 0.1), 100);
-    setTimeout(() => this.beep(659.25, 0.2), 200);
+    // This is the generic old win, we will use GameService to sync the new one
   }
 }

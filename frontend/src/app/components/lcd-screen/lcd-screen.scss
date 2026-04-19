@@ -40,6 +40,13 @@
     gap: 12px;
   }
 
+  .win-indicator {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a2018;
+    animation: blink 0.5s step-start infinite;
+  }
+
   .credits {
     font-size: 28px;
     letter-spacing: 3px;
@@ -75,6 +82,10 @@
   padding: 6px;
   position: relative;
   background-color: rgba(0, 0, 0, 0.03);
+
+  &.win-flash {
+    opacity: 0;
+  }
 
   .card-suit {
     font-size: 28px;
@@ -118,4 +129,8 @@
     padding: 0 4px;
     line-height: 1;
   }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }

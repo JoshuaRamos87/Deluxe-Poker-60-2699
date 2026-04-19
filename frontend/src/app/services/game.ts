@@ -16,6 +16,8 @@ export class GameService {
   session = signal<GameSession | null>(null);
   heldIndices = signal<boolean[]>([false, false, false, false, false]);
   visibleIndices = signal<boolean[]>([true, true, true, true, true]);
+  winningIndices = signal<number[]>([]);
+  isFlashing = signal<boolean>(false);
   soundEnabled = signal<boolean>(true);
   lastWin = signal<{ rank: HandRank, points: number } | null>(null);
 
@@ -36,6 +38,8 @@ export class GameService {
     
     // Hide all cards initially
     this.visibleIndices.set([false, false, false, false, false]);
+    this.winningIndices.set([]);
+    this.isFlashing.set(false);
     this.session.update(current => current ? { ...current, ...res, currentHand: res.currentHand } : null);
     this.heldIndices.set([false, false, false, false, false]);
     this.lastWin.set(null);
@@ -86,8 +90,24 @@ export class GameService {
     }
 
     this.lastWin.set({ rank: res.handRank, points: res.pointsWon });
+    this.winningIndices.set(res.winningIndices || []);
+    
     if (res.pointsWon > 0) {
-      this.playWin();
+      await this.playWinAnimation();
+    }
+  }
+
+  async playWinAnimation() {
+    // beep-^dee-deep beep-^dee-deep (played twice)
+    for (let cycle = 0; cycle < 2; cycle++) {
+      for (let note = 0; note < 3; note++) {
+        this.isFlashing.set(true);
+        if (this.soundEnabled()) this.sound.playWinNote(note);
+        await new Promise(resolve => setTimeout(resolve, 150));
+        this.isFlashing.set(false);
+        await new Promise(resolve => setTimeout(resolve, 150));
+      }
+      await new Promise(resolve => setTimeout(resolve, 200)); // gap between loops
     }
   }
 
