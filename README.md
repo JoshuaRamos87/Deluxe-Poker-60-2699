@@ -1,61 +1,59 @@
-# Retro Poker 60-2699
+# Frontend
 
-A 1:1 functional web-based recreation of the classic **RadioShack 2-Player Poker** handheld game (Cat. No. 60-2699). This project simulates the physical user interface, the segmented LCD screen, and the specific "Jacks or Better" mathematical logic native to the original hardware.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
 
-## Features
-- **Authentic Visuals:** Two-tone plastic casing, LCD grain texture, and high-fidelity 14-segment digital display (DSEG14).
-- **Tactile UI:** Realistic hardware-style buttons with active-state shadows and offsets.
-- **Classic Gameplay:** 5-card draw poker following the "Jacks or Better" variant.
-- **Pass-and-Play:** Dedicated 2-player mode that tracks scores for both Player 1 and Player 2.
-- **Immersive Sound:** Web Audio API synthesized piezo-buzzer beeps and win jingles.
-- **Sequential Reveal:** Authentically animated card reveal logic (left-to-right) with synchronized beeps.
-- **Point System:** Start with 100 points; lose 5 points for every non-winning round. "TOTAL GAME OVER" at 0 points.
+## Development server
 
-## Technical Stack
+To start a local development server, run:
 
-### Backend
-- **Node.js (LTS)** with **Fastify**
-- **TypeScript** (Strict Mode)
-- **Vitest** for authoritative hand-evaluation unit testing
-- **In-memory Session Management** for secure, server-side game state
-
-### Frontend
-- **Angular (Latest)**
-- **Angular Signals** for reactive, zero-latency UI updates
-- **SCSS** for advanced hardware-mimicking styles
-- **Web Audio API** for hardware-accurate sound synthesis
-
-## Prerequisites
-Before running this project, ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (Latest LTS recommended, v18+)
-- [npm](https://www.npmjs.com/) (included with Node.js)
-
-## Getting Started
-
-### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/Deluxe-Poker-60-2699.git
-cd Deluxe-Poker-60-2699
+ng serve
 ```
 
-### 2. Run the Backend Server
-The backend acts as the authoritative game engine.
-```bash
-cd backend
-npm install
-npm run start
-```
-*The server will run on `http://localhost:3000`.*
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-### 3. Run the Frontend Application
-The frontend is the "hardware shell" that communicates with the server.
-```bash
-# Open a new terminal window/tab
-cd frontend
-npm install
-npm start
-```
-*The application will be available at `http://localhost:4200`.*
+## Code scaffolding
 
-## Rules & Paytable
-For detailed information on hand rankings and point rewards, see the [Rules.md](./Rules.md) file.
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

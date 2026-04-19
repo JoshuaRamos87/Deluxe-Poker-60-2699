@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { evaluateHand } from './logic.js';
-import { HandRank, PAYTABLE } from './types.js';
+import { evaluateHand } from './poker-logic';
+import { HandRank } from '../models/game.models';
 
 describe('Hand Evaluation', () => {
   it('should identify Royal Flush', () => {

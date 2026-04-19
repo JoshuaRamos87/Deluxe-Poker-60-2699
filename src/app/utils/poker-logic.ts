@@ -1,4 +1,4 @@
-import { Card, Rank, Suit, HandRank, PAYTABLE } from './types.js';
+import { Card, Rank, Suit, HandRank, PAYTABLE } from '../models/game.models';
 
 export function createDeck(): Card[] {
   const suits: Suit[] = ['S', 'H', 'D', 'C'];
