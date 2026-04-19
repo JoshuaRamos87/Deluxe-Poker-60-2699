@@ -18,12 +18,19 @@
     <div class="lcd-hand">
       <div *ngFor="let card of [0,1,2,3,4]; let i = index" class="lcd-card-slot">
         <ng-container *ngIf="gameService.session()?.currentHand?.[i] as c; else emptySlot">
-          <span class="card-suit">{{ getSuitDisplay(c.suit) }}</span>
-          <div class="card-rank-wrapper">
-            <span class="tens-digit" *ngIf="c.rank === 10">1</span>
-            <span class="card-rank">{{ getRankDisplay(c.rank) }}</span>
-          </div>
-          <span class="hold-label" *ngIf="gameService.heldIndices()[i]">HOLD</span>
+          <ng-container *ngIf="gameService.visibleIndices()[i]; else hiddenCard">
+            <span class="card-suit">{{ getSuitDisplay(c.suit) }}</span>
+            <div class="card-rank-wrapper">
+              <span class="tens-digit" *ngIf="c.rank === 10">1</span>
+              <span class="card-rank">{{ getRankDisplay(c.rank) }}</span>
+            </div>
+            <span class="hold-label" *ngIf="gameService.heldIndices()[i]">HOLD</span>
+          </ng-container>
+          <ng-template #hiddenCard>
+            <div class="card-rank-wrapper">
+              <span class="card-rank ghost">8</span>
+            </div>
+          </ng-template>
         </ng-container>
         <ng-template #emptySlot>
           <div class="card-rank-wrapper">

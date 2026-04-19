@@ -18,7 +18,7 @@ export interface GameSession {
 }
 
 export enum HandRank {
-  HIGH_CARD = 'High Card',
+  HIGH_CARD = 'GAME OVER',
   PAIR = 'One Pair (Jacks or Better)',
   TWO_PAIR = 'Two Pair',
   THREE_OF_A_KIND = 'Three of a Kind',
