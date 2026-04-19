@@ -27,7 +27,7 @@
               <span class="tens-digit" *ngIf="c.rank === 10">1</span>
               <span class="card-rank">{{ getRankDisplay(c.rank) }}</span>
             </div>
-            <span class="hold-label" *ngIf="gameService.heldIndices()[i]">HOLD</span>
+            <span class="hold-label" *ngIf="gameService.heldIndices()[i]">HELD</span>
           </ng-container>
           <ng-template #hiddenCard>
             <div class="card-rank-wrapper">
