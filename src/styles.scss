@@ -1,9 +1,14 @@
-body {
+html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
   background-color: #a19688;
+}
+
+body {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
 }
