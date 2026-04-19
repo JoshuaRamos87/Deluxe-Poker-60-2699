@@ -18,6 +18,8 @@ export class GameService {
   visibleIndices = signal<boolean[]>([true, true, true, true, true]);
   winningIndices = signal<number[]>([]);
   isFlashing = signal<boolean>(false);
+  displayScore = signal<number>(100);
+  isAnimating = signal<boolean>(false);
   soundEnabled = signal<boolean>(true);
   lastWin = signal<{ rank: HandRank, points: number } | null>(null);
 
@@ -25,12 +27,14 @@ export class GameService {
     this.playBeep();
     const res = await firstValueFrom(this.http.post<GameSession>(`${this.apiUrl}/new`, {}));
     this.session.set(res);
+    this.displayScore.set(100);
     this.heldIndices.set([false, false, false, false, false]);
     this.visibleIndices.set([true, true, true, true, true]);
     this.lastWin.set(null);
   }
 
   async deal() {
+    if (this.isAnimating()) return;
     this.playBeep(1200); // Higher pitch for Deal/Draw click
     const s = this.session();
     if (!s) return;
@@ -44,6 +48,7 @@ export class GameService {
     this.heldIndices.set([false, false, false, false, false]);
     this.lastWin.set(null);
 
+    this.isAnimating.set(true);
     // Sequential reveal
     for (let i = 0; i < 5; i++) {
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -54,20 +59,26 @@ export class GameService {
       });
       this.playBeep(880); // Standard reveal beep
     }
+    this.isAnimating.set(false);
   }
 
   async draw() {
+    if (this.isAnimating()) return;
     this.playBeep(1200); // Higher pitch for Deal/Draw click
     const s = this.session();
     if (!s) return;
     const res = await firstValueFrom(this.http.post<any>(`${this.apiUrl}/${s.sessionId}/draw`, { heldIndices: this.heldIndices() }));
     console.log('Backend Response:', res);
     
+    this.isAnimating.set(true);
+
     // Hide non-held cards
     const currentVisible = [...this.heldIndices()];
     this.visibleIndices.set(currentVisible);
 
     const finalHand = res.finalHand;
+    const targetScore = s.currentPlayer === 1 ? res.p1Score : res.p2Score;
+
     this.session.update(current => current ? { 
       ...current, 
       currentHand: finalHand, 
@@ -95,6 +106,28 @@ export class GameService {
     if (res.pointsWon > 0) {
       await this.playWinAnimation();
     }
+
+    // Finally tally score
+    await this.animateScoreCount(targetScore);
+    
+    this.isAnimating.set(false);
+  }
+
+  async animateScoreCount(target: number) {
+    const current = this.displayScore();
+    
+    if (target <= current) {
+      // Immediate update for decrements or no change
+      this.displayScore.set(target);
+      return;
+    }
+
+    // Incremental animation only for wins
+    while (this.displayScore() < target) {
+      this.displayScore.set(this.displayScore() + 1);
+      if (this.soundEnabled()) this.sound.playCountingBeep();
+      await new Promise(resolve => setTimeout(resolve, 40));
+    }
   }
 
   async playWinAnimation() {
@@ -112,11 +145,13 @@ export class GameService {
   }
 
   async switchPlayer() {
+    if (this.isAnimating()) return;
     this.playBeep();
     const s = this.session();
     if (!s) return;
     const res = await firstValueFrom(this.http.post<any>(`${this.apiUrl}/${s.sessionId}/switch-player`, {}));
     this.session.update(current => current ? { ...current, ...res, currentHand: [] } : null);
+    this.displayScore.set(s.currentPlayer === 1 ? res.p2Score : res.p1Score);
     this.heldIndices.set([false, false, false, false, false]);
     this.lastWin.set(null);
   }

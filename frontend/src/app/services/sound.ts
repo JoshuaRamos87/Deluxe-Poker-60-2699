@@ -43,6 +43,13 @@ export class SoundService {
     this.beep(freq, 0.2);
   }
 
+  playCountingBeep() {
+    this.init();
+    if (!this.audioCtx) return;
+    // Lower frequency, short duration, and lower volume for rapid counting
+    this.beep(660, 0.03);
+  }
+
   playWin() {
     // This is the generic old win, we will use GameService to sync the new one
   }
