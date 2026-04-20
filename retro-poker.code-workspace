@@ -1,0 +1,39 @@
+{
+  "folders": [
+    {
+      "name": "Retro Poker",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "files.associations": {
+      "*.scss": "scss"
+    },
+    "files.exclude": {
+      "**/.git": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "**/.angular": true,
+      "**/dist": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.angular": true,
+      "**/android/app/build": true
+    },
+    "js/ts.tsdk.path": "node_modules/typescript/lib"
+  },
+  "extensions": {
+    "recommendations": [
+      "angular.ng-template",
+      "esbenp.prettier-vscode",
+      "vscjava.vscode-java-pack",
+      "ms-androidtools.android-extension-pack"
+    ]
+  }
+}
