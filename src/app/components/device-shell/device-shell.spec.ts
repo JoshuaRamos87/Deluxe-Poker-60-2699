@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeviceShell } from './device-shell';
+import { DeviceShellComponent } from './device-shell';
 
-describe('DeviceShell', () => {
-  let component: DeviceShell;
-  let fixture: ComponentFixture<DeviceShell>;
+describe('DeviceShellComponent', () => {
+  let component: DeviceShellComponent;
+  let fixture: ComponentFixture<DeviceShellComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeviceShell],
+      imports: [DeviceShellComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DeviceShell);
+    fixture = TestBed.createComponent(DeviceShellComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

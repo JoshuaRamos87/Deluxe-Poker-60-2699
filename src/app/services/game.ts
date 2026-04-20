@@ -44,6 +44,16 @@ export class GameService {
     const s = this.session();
     if (!s) return;
 
+    // Take Ante
+    let p1Score = s.p1Score;
+    let p2Score = s.p2Score;
+    if (s.currentPlayer === 1) {
+      p1Score = Math.max(0, p1Score - 5);
+    } else {
+      p2Score = Math.max(0, p2Score - 5);
+    }
+    this.displayScore.set(s.currentPlayer === 1 ? p1Score : p2Score);
+
     const deck = shuffle(createDeck());
     const hand = deck.splice(0, 5);
     
@@ -56,6 +66,8 @@ export class GameService {
       ...current, 
       deck, 
       currentHand: hand, 
+      p1Score,
+      p2Score,
       phase: 'dealt' 
     } : null);
     
@@ -97,9 +109,9 @@ export class GameService {
     let p2Score = s.p2Score;
 
     if (s.currentPlayer === 1) {
-      p1Score = points > 0 ? p1Score + points : Math.max(0, p1Score - 5);
+      p1Score = p1Score + points;
     } else {
-      p2Score = points > 0 ? p2Score + points : Math.max(0, p2Score - 5);
+      p2Score = p2Score + points;
     }
 
     const targetScore = s.currentPlayer === 1 ? p1Score : p2Score;

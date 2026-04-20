@@ -4,7 +4,7 @@ This game is a 1:1 recreation of the classic RadioShack handheld poker game, fol
 
 ## Gameplay Mechanics
 - **Start:** Each player starts a new game with **100 points**.
-- **The Ante:** Every round where no points are won, the player **loses 5 points**.
+- **The Ante:** At the start of every round, an ante of **5 points** is deducted.
 - **Game Over:** If a player's score reaches **0**, it is a "TOTAL GAME OVER," and the game must be reset.
 
 ---
@@ -51,4 +51,4 @@ One pair of cards of the same rank, but **only if the rank is Jack, Queen, King,
 
 ### 10. GAME OVER — 0 Points
 A hand with no matching ranks, sequences, or shared suits.
-*   **Result:** Deduction of 5 points from your total score.
+*   **Result:** You lose the 5-point ante already deducted at the start of the round.

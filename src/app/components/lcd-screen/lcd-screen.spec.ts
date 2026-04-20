@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LcdScreen } from './lcd-screen';
+import { LcdScreenComponent } from './lcd-screen';
 
-describe('LcdScreen', () => {
-  let component: LcdScreen;
-  let fixture: ComponentFixture<LcdScreen>;
+describe('LcdScreenComponent', () => {
+  let component: LcdScreenComponent;
+  let fixture: ComponentFixture<LcdScreenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LcdScreen],
+      imports: [LcdScreenComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(LcdScreen);
+    fixture = TestBed.createComponent(LcdScreenComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
