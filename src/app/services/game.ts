@@ -40,17 +40,24 @@ export class GameService {
 
   async deal() {
     if (this.isAnimating()) return;
-    this.playBeep(1200);
     const s = this.session();
     if (!s) return;
+
+    // Prevent deal if player has no points to ante
+    const currentScore = s.currentPlayer === 1 ? s.p1Score : s.p2Score;
+    if (currentScore < 5) {
+      return;
+    }
+
+    this.playBeep(1200);
 
     // Take Ante
     let p1Score = s.p1Score;
     let p2Score = s.p2Score;
     if (s.currentPlayer === 1) {
-      p1Score = Math.max(0, p1Score - 5);
+      p1Score = p1Score - 5;
     } else {
-      p2Score = Math.max(0, p2Score - 5);
+      p2Score = p2Score - 5;
     }
     this.displayScore.set(s.currentPlayer === 1 ? p1Score : p2Score);
 
@@ -202,7 +209,7 @@ export class GameService {
   }
 
   toggleHold(index: number) {
-    if (this.session()?.phase !== 'dealt') return;
+    if (this.isAnimating() || this.session()?.phase !== 'dealt') return;
     this.playBeep(440);
     this.heldIndices.update(current => {
       const next = [...current];
