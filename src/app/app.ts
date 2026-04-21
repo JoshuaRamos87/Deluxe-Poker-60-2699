@@ -1,11 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { DeviceShellComponent } from './components/device-shell/device-shell';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, DeviceShellComponent],
+  imports: [DeviceShellComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
