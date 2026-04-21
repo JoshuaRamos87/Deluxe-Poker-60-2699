@@ -5,10 +5,24 @@ html, body {
   width: 100%;
   overflow: hidden;
   background-color: #a19688;
+  // Prevent pull-to-refresh and scroll bouncing
+  overscroll-behavior: none;
+  // Optimize touch interactions
+  touch-action: manipulation;
+  // Disable the default mobile tap highlight box
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   display: flex;
   align-items: center;
   justify-content: center;
+  // iOS/Android safe area support
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+// Ensure buttons don't show the highlight either
+button {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
