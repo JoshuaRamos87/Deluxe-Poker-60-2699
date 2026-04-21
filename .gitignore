@@ -56,4 +56,11 @@ Thumbs.db
 *.jks
 *.keystore
 *.p12
-android/app/release-key.jks
+release-key
+release-key.*
+
+# Android Build Artifacts (Metadata and DEX)
+output-metadata.json
+*.dm
+*.apk
+*.aab
