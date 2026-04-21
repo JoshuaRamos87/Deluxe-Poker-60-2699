@@ -57,5 +57,8 @@ npm run generate:assets
 ```
 *(Note: Both Android commands require Android SDK and Java installed.)*
 
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## Rules & Paytable
 For detailed information on hand rankings, point rewards, and game mechanics, see the [Rules.md](./Rules.md) file.
