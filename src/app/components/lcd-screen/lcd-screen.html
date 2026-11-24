@@ -1,46 +1,49 @@
-<div class="lcd-outer">
+<div class="lcd-outer" role="region" aria-label="Poker LCD Display">
   <div class="lcd-inner">
     <!-- Top HUD Row -->
     <div class="lcd-hud">
       <div class="player-score-group">
         <span class="player-num">P{{ gameService.session()?.currentPlayer || 1 }}</span>
         <span class="credits">{{ gameService.displayScore() }}</span>
-        <span class="win-indicator" *ngIf="gameService.lastWin() && gameService.lastWin()!.points > 0">WIN</span>
+        @if (gameService.lastWin() && gameService.lastWin()!.points > 0) {
+          <span class="win-indicator">WIN</span>
+        }
       </div>
-      <span class="sound-icon">{{ gameService.soundEnabled() ? '(((o)))' : '' }}</span>
+      <span class="sound-icon" aria-hidden="true">{{ gameService.soundEnabled() ? '(((o)))' : '' }}</span>
     </div>
-    
+
     <!-- Message Row -->
-    <div class="lcd-message">
+    <div class="lcd-message" aria-live="polite">
       {{ isTotalGameOver() ? 'TOTAL GAME OVER' : (gameService.lastWin() && gameService.lastWin()!.points === 0 ? 'GAME OVER' : '') }}
     </div>
 
     <!-- Cards Array -->
-    <div class="lcd-hand" *ngIf="!isTotalGameOver()">
-      <div *ngFor="let card of [0,1,2,3,4]; let i = index" 
-           class="lcd-card-slot"
-           [class.win-flash]="gameService.winningIndices().includes(i) && gameService.isFlashing()">
-        <ng-container *ngIf="gameService.session()?.currentHand?.[i] as c; else emptySlot">
-          <ng-container *ngIf="gameService.visibleIndices()[i]; else hiddenCard">
-            <span class="card-suit">{{ getSuitDisplay(c.suit) }}</span>
-            <div class="card-rank-wrapper">
-              <span class="tens-digit" *ngIf="c.rank === 10">1</span>
-              <span class="card-rank">{{ getRankDisplay(c.rank) }}</span>
-            </div>
-            <span class="hold-label" *ngIf="gameService.heldIndices()[i]">HELD</span>
-          </ng-container>
-          <ng-template #hiddenCard>
-            <div class="card-rank-wrapper">
-              <span class="card-rank ghost">8</span>
-            </div>
-          </ng-template>
-        </ng-container>
-        <ng-template #emptySlot>
-          <div class="card-rank-wrapper">
-            <span class="card-rank ghost">8</span>
+    @if (!isTotalGameOver()) {
+      <div class="lcd-hand">
+        @for (i of cardSlots; track i) {
+          <div
+            class="lcd-card-slot"
+            [class.win-flash]="gameService.winningIndices().includes(i) && gameService.isFlashing()">
+            @let card = gameService.session()?.currentHand?.[i];
+            @if (card && gameService.visibleIndices()[i]) {
+              <span class="card-suit">{{ getSuitDisplay(card.suit) }}</span>
+              <div class="card-rank-wrapper">
+                @if (card.rank === 10) {
+                  <span class="tens-digit">1</span>
+                }
+                <span class="card-rank">{{ getRankDisplay(card.rank) }}</span>
+              </div>
+              @if (gameService.heldIndices()[i]) {
+                <span class="hold-label">HELD</span>
+              }
+            } @else {
+              <div class="card-rank-wrapper">
+                <span class="card-rank ghost" aria-hidden="true">8</span>
+              </div>
+            }
           </div>
-        </ng-template>
+        }
       </div>
-    </div>
+    }
   </div>
 </div>

@@ -1,22 +1,23 @@
 import { Component, inject, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { GameService } from '../../services/game';
 
 @Component({
   selector: 'app-lcd-screen',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './lcd-screen.html',
   styleUrl: './lcd-screen.scss'
 })
 export class LcdScreenComponent {
   gameService = inject(GameService);
-  
+  readonly cardSlots = [0, 1, 2, 3, 4];
+
   isTotalGameOver = computed(() => {
     const s = this.gameService.session();
     if (!s) return false;
+    if (s.phase === 'dealt' || this.gameService.isAnimating()) return false;
     const score = s.currentPlayer === 1 ? s.p1Score : s.p2Score;
-    return score === 0;
+    return score < 5;
   });
 
   getRankDisplay(rank: number): string {

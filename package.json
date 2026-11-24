@@ -9,8 +9,8 @@
     "test": "ng test",
     "test:logic": "vitest run src/app/utils/poker-logic.spec.ts",
     "generate:assets": "npx capacitor-assets generate --android",
-    "build:apk": "ng build --configuration production && npx cap sync android && cd android && .\\gradlew assembleDebug",
-    "build:android:unsigned": "ng build --configuration production && npx cap sync android && cd android && .\\gradlew assembleRelease",
+    "build:apk": "ng build --configuration production && npx cap sync android && node scripts/run-gradle.mjs assembleDebug",
+    "build:android:unsigned": "ng build --configuration production && npx cap sync android && node scripts/run-gradle.mjs assembleRelease",
     "android:open": "npx cap open android"
   },
   "author": "Joshua Ramos",
@@ -26,6 +26,7 @@
     "@angular/router": "^21.2.0",
     "@capacitor/android": "^8.3.1",
     "@capacitor/core": "^8.3.1",
+    "dseg": "^0.46.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
