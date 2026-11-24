@@ -1,0 +1,36 @@
+{
+  "name": "Deluxe Poker 60-2699",
+  "short_name": "Deluxe Poker",
+  "description": "A 1:1 recreation of the classic RadioShack 2-Player Poker handheld LCD game (Cat. No. 60-2699).",
+  "theme_color": "#3a414e",
+  "background_color": "#3a414e",
+  "display": "standalone",
+  "scope": "./",
+  "start_url": "./",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
